@@ -35,10 +35,20 @@ class UserController extends Controller
         /*$User = UserModel::firstWhere('level_id', 1);
         return view('user', ['data' => $User]);*/
 
-            $User = UserModel::findOr(20,['username', 'nama'], function(){
-                abort(404);
-            });
-            return view('user', ['data' => $User]);
+        /*$User = UserModel::findOr(20,['username', 'nama'], function(){
+        abort(404);
+        });
+        return view('user', ['data' => $User]);*/
+
+        /*$User = UserModel::findOrFail(1);
+        return view('user', ['data' => $User]);*/
+
+        $User = UserModel::where('username', 'manager 9')->firstOrFail();
+        return view('user', ['data' => $User]);
+
+        /*$User = UserModel::where('level_id', 2)->count();
+        dd($User);
+        return view('user', ['data' => $User]);*/
     }
 
     public function tambah()
