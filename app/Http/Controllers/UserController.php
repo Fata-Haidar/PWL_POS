@@ -46,8 +46,31 @@ class UserController extends Controller
         /*$User = UserModel::where('username', 'manager 9')->firstOrFail();
         return view('user', ['data' => $User]);*/
 
-        $User = UserModel::where('level_id', 2)->count();
-        return view('jumlah_pengguna', ['data' => $User]);
+        /*$User = UserModel::where('level_id', 2)->count();
+        return view('jumlah_pengguna', ['data' => $User]);*/
+
+        /*$User = UserModel::firstOrCreate(
+            [
+                'username' => 'manager22', 
+                'nama' => 'Manager Dua Dua',
+                'password' => Hash::make('123456'),
+                'level_id' => 2
+                ],
+        );
+            return view('user', ['data' => $User]);*/
+
+            $User = UserModel::firstOrNew(
+            [
+                'username' => 'manager', 
+                'nama' => 'Manager',
+                'password' => Hash::make('123456'),
+                'level_id' => 2
+                ],
+        );
+        $User->save();
+            return view('user', ['data' => $User]);
+
+
     }
 
     public function tambah()
