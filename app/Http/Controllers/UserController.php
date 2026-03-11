@@ -59,7 +59,7 @@ class UserController extends Controller
         );
             return view('user', ['data' => $User]);*/
 
-            $User = UserModel::firstOrNew(
+            /*$User = UserModel::firstOrNew(
             [
                 'username' => 'manager', 
                 'nama' => 'Manager',
@@ -68,7 +68,53 @@ class UserController extends Controller
                 ],
         );
         $User->save();
-            return view('user', ['data' => $User]);
+            return view('user', ['data' => $User]);*/
+
+        /*$User = UserModel::create(
+            [
+                'username' => 'manager55',
+                'nama' => 'Manager55',
+                'password' => Hash::make('12345'),
+                'level_id' => 2
+                ],
+        );
+        $User->username = 'manager56';
+        $User->isDirty();
+        $User->isDirty('username');
+        $User->isDirty('nama');
+        $User->isDirty('nama', 'username');
+
+        $User->isClean();
+        $User->isClean('username');
+        $User->isClean('nama');
+        $User->isClean('nama', 'username');
+
+        $User->save();
+
+        $User->isDirty();
+        $User->isClean();
+        dd($User->isDirty());*/
+
+        $User = UserModel::create(
+            [
+                'username' => 'manager11',
+                'nama' => 'Manager11',
+                'password' => Hash::make('12345'),
+                'level_id' => 2
+                ],
+        );
+        $User->username = 'manager12';
+
+        $User->save();
+
+        $User->wasChanged();
+        $User->wasChanged('username');
+        $User->wasChanged('username', 'level_id');
+        $User->wasChanged('nama');
+        dd($User->wasChanged('nama', 'username'));
+
+
+        
 
 
     }
